@@ -68,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.percentage = 65;
           this.init_cocossd_obj_prediction();
         };
-      }).catch((error) => { alert(JSON.stringify(error)) });
+      }).catch((error) => { alert(JSON.stringify(error)); });
   }
 
   // 預測完畫進去圖案上
@@ -80,7 +80,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // 設定寬高
     // 這邊會設定這 size 是因為我的 usb 相機 default 抓圖就是這 size
-    canvas.width = 640;//window.innerWidth; //800;
+    canvas.width = 640;// window.innerWidth; //800;
     canvas.height = 480;// window.innerHeight;//600;
 
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -115,7 +115,7 @@ export class AppComponent implements OnInit, OnDestroy {
       const y = prediction.bbox[1];
       ctx.fillStyle = '#000000';
       ctx.fillText(prediction.class, x, y);
-      this.speakOut(prediction)
+      this.speakOut(prediction);
     });
   }
 
@@ -150,20 +150,20 @@ export class AppComponent implements OnInit, OnDestroy {
   initSpeech() {
     const speech = new Speech();
     speech.init({
-      'volume': 1,
-      'lang': 'zh-Hans',
-      'rate': 1,
-      'pitch': 1,
+      volume: 1,
+      lang: 'zh-Hans',
+      rate: 1,
+      pitch: 1,
       // 'voice': 'Chinese Mandarin female',
-      'splitSentences': true,
+      splitSentences: true,
       listeners: {
         onvoiceschanged: (voices) => {
-          console.log("Voices changed", voices);
+          console.log('Voices changed', voices);
           this.speech = speech;
         }
       }
     }).then((data) => {
-      console.log("Speech is ready", data);
+      console.log('Speech is ready', data);
       this.speech = speech;
     });
   }
@@ -171,128 +171,128 @@ export class AppComponent implements OnInit, OnDestroy {
   speakOut(prediction: cocoSSD.DetectedObject) {
     // person
     if (prediction.class === 'person' && this.speakFlag !== 'person') {
-      this.updateSpeakFlag(prediction.class)
+      this.updateSpeakFlag(prediction.class);
       this.speech.speak(
         {
           text: '五郎喔',
           queue: false,
           listeners: {
             onstart: () => {
-                console.log("Start utterance")
+                console.log('Start utterance');
             },
             onend: () => {
-                console.log("End utterance")
+                console.log('End utterance');
             },
             onresume: () => {
-                console.log("Resume utterance")
+                console.log('Resume utterance');
             },
             onboundary: (event) => {
-                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.')
+                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.');
             }
           }
         }
-      ).then(()=>{});
-    };
+      ).then(() => {});
+    }
 
     // tv
-    if (prediction.class == 'tv' && this.speakFlag !== 'tv') {
-      this.updateSpeakFlag(prediction.class)
+    if (prediction.class === 'tv' && this.speakFlag !== 'tv') {
+      this.updateSpeakFlag(prediction.class);
       this.speech.speak(
         {
           text: '賣購跨點系阿!',
           queue: false,
           listeners: {
             onstart: () => {
-                console.log("Start utterance")
+                console.log('Start utterance');
             },
             onend: () => {
-                console.log("End utterance")
+                console.log('End utterance');
             },
             onresume: () => {
-                console.log("Resume utterance")
+                console.log('Resume utterance');
             },
             onboundary: (event) => {
-                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.')
+                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.');
             }
           }
         }
-      ).then(()=>{});
-    };
+      ).then(() => {});
+    }
 
     // cup
-    if (prediction.class == 'cup' && this.speakFlag !== 'cup') {
-      this.updateSpeakFlag(prediction.class)
+    if (prediction.class === 'cup' && this.speakFlag !== 'cup') {
+      this.updateSpeakFlag(prediction.class);
       this.speech.speak(
         {
           text: '來杯可樂吧',
           queue: false,
           listeners: {
             onstart: () => {
-                console.log("Start utterance")
+                console.log('Start utterance');
             },
             onend: () => {
-                console.log("End utterance")
+                console.log('End utterance');
             },
             onresume: () => {
-                console.log("Resume utterance")
+                console.log('Resume utterance');
             },
             onboundary: (event) => {
-                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.')
+                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.');
             }
           }
         }
-      ).then(()=>{});
-    };
+      ).then(() => {});
+    }
 
     // teddy bear
-    if (prediction.class == 'teddy bear' && this.speakFlag !== 'teddy bear') {
-      this.updateSpeakFlag(prediction.class)
+    if (prediction.class === 'teddy bear' && this.speakFlag !== 'teddy bear') {
+      this.updateSpeakFlag(prediction.class);
       this.speech.speak(
         {
           text: '熊熊',
           queue: false,
           listeners: {
             onstart: () => {
-                console.log("Start utterance")
+                console.log('Start utterance');
             },
             onend: () => {
-                console.log("End utterance")
+                console.log('End utterance');
             },
             onresume: () => {
-                console.log("Resume utterance")
+                console.log('Resume utterance');
             },
             onboundary: (event) => {
-                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.')
+                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.');
             }
           }
         }
-      ).then(()=>{});
-    };
+      ).then(() => {});
+    }
 
     // chair
-    if (prediction.class == 'chair' && this.speakFlag !== 'chair') {
-      this.updateSpeakFlag(prediction.class)
+    if (prediction.class === 'chair' && this.speakFlag !== 'chair') {
+      this.updateSpeakFlag(prediction.class);
       this.speech.speak(
         {
           text: '能站就不要座',
           queue: false,
           listeners: {
             onstart: () => {
-                console.log("Start utterance")
+                console.log('Start utterance');
             },
             onend: () => {
-                console.log("End utterance")
+                console.log('End utterance');
             },
             onresume: () => {
-                console.log("Resume utterance")
+                console.log('Resume utterance');
             },
             onboundary: (event) => {
-                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.')
+                console.log(event.name + ' boundary reached after ' + event.elapsedTime + ' milliseconds.');
             }
           }
         }
-      ).then(()=>{});
-    };
+      ).then(() => {});
+    }
   }
 
   updateSpeakFlag(predicitonClass: string) {
