@@ -40,3 +40,21 @@
   font-size: 30px;
   font-weight: bolder;
 }
+
+.footerSelect{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 30vh;
+  background-color: cadetblue;
+}
+
+.clientDeviceInfo{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  /* width: 10vw; */
+  color: #000;
+  font-weight: 20vh;
+  /* background-color: gold; */
+}
